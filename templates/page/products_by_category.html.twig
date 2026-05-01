@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }} - Our Store{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="p-5 mb-4 bg-primary bg-gradient text-white rounded-3">
+        <h1 class="display-4 fw-bold">{{ category.name }}</h1>
+        <span class="badge bg-light text-dark fs-6">{{ products|length }} Products Available</span>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text fw-bold text-success">${{ product.price }}</p>
+                    <a href="{{ path('product_details', {id: product.id}) }}" class="btn btn-outline-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories - Our Store{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h2 class="text-center mb-5">Shop by Category</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for category in categories %}
+        <div class="col">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <h4>{{ category.name }}</h4>
+                    <a href="{{ path('products_by_category', {id: category.id}) }}" class="btn btn-outline-primary">Browse</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
